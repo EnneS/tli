@@ -1,5 +1,6 @@
 package grapher.ui;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 
 import javax.swing.JList;
@@ -9,9 +10,10 @@ import javax.swing.event.ListSelectionListener;
 public class FunctionList extends JList {
 	
 	Grapher grapher;
-
+	
 	public FunctionList(String[] data, Grapher grapher) {
-		super(data);
+		
+		super(data);				
 		
 		this.addListSelectionListener(new ListSelectionListener() {
 
