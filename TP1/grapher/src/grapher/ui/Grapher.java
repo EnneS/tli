@@ -117,6 +117,12 @@ public class Grapher extends JPanel {
 		repaint();
 	}
 	
+	public void remove(int index) {
+		functions.remove(index);
+		this.selectedFunctionIndex = -1;
+		repaint();
+	}
+	
 	public void setSelectedFunction(int i) {
 		this.selectedFunctionIndex = i;
 		repaint();

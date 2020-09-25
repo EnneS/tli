@@ -11,11 +11,13 @@ public class Main extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		Grapher grapher = new Grapher();		
-		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, new FunctionList(expressions, grapher), grapher);
+		FunctionList functionList = new FunctionList(expressions, grapher);
+		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, functionList, grapher);
 		for(String expression : expressions) {
 			grapher.add(expression);
 		}
 		
+		setJMenuBar(new Menu(grapher, functionList));
 		add(splitPane);
 		pack();
 	}

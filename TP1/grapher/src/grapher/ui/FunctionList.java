@@ -1,17 +1,20 @@
 package grapher.ui;
 
-import java.awt.Component;
-
+import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-public class FunctionList extends JList {
+public class FunctionList extends JList<String> {
 	
 	Grapher grapher;
-
+	private static DefaultListModel<String> list = new DefaultListModel<String>();
+	
 	public FunctionList(String[] data, Grapher grapher) {
-		super(data);
+		super(list);
+		for(String s : data) {
+			list.addElement(s);
+		}
 		
 		this.addListSelectionListener(new ListSelectionListener() {
 
@@ -22,5 +25,13 @@ public class FunctionList extends JList {
 			}
 			
 		});
+	}
+	
+	public void addElement(String s){
+		list.addElement(s);
+	}
+	
+	public void removeElement(int i) {
+		list.removeElementAt(i);
 	}
 }
