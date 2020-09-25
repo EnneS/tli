@@ -18,17 +18,7 @@ public class Menu extends JMenuBar {
 		add(menu);
 
 		JMenuItem addFunctionItem = new JMenuItem("Add...");
-		addFunctionItem.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-			     String expression = JOptionPane.showInputDialog("Nouvelle expression :"); 
-			     grapher.add(expression);
-			     functionList.addElement(expression);
-			}
-			
-		});
+		addFunctionItem.setAction(new AddExpressionAction(grapher, functionList));
 		
 		JMenuItem removeFunctionItem = new JMenuItem();
 		removeFunctionItem.setAction(new RemoveExpressionAction(grapher, functionList));
