@@ -10,7 +10,7 @@ public class LeftPanel extends JPanel {
 		
 		this.setLayout(new BorderLayout());
 		
-		Toolbar toolbar = new Toolbar();
+		Toolbar toolbar = new Toolbar(grapher,functionList);
 				
 		this.add(functionList, BorderLayout.CENTER);
 		
