@@ -101,6 +101,7 @@ public class Grapher extends JPanel {
 		this.addMouseWheelListener(new MouseWheelListener () {
 			@Override
 			public void mouseWheelMoved(MouseWheelEvent e) {
+				// TODO Auto-generated method stub
 				zoom(new Point(e.getX(), e.getY()), 5*(-e.getWheelRotation()));
 			}
 		});
@@ -188,6 +189,7 @@ public class Grapher extends JPanel {
 		for(BigDecimal y = ystep.negate(); y.doubleValue() > ymin; y = y.subtract(ystep)) { drawYTick(g2, y); }
 		
 		if(firstRightX != -1 && firstRightY != -1) {
+			System.out.println("je fais un rectangle");
 		    g.drawRect(min(firstRightX, lastX),min(firstRightY, lastY), abs(firstRightX-lastX), abs(firstRightY - lastY));  
 		    g.setColor(Color.RED);  
 		}
