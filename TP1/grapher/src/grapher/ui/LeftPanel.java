@@ -6,14 +6,12 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 
 public class LeftPanel extends JPanel {
-	public LeftPanel(String[] data, Grapher grapher) {
+	public LeftPanel(String[] data, Grapher grapher, FunctionList functionList) {
 		
 		this.setLayout(new BorderLayout());
 		
 		Toolbar toolbar = new Toolbar();
-		
-		FunctionList functionList = new FunctionList(data, grapher);
-		
+				
 		this.add(functionList, BorderLayout.CENTER);
 		
 		this.add(toolbar, BorderLayout.SOUTH);	

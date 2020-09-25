@@ -10,11 +10,12 @@ import javax.swing.event.ListSelectionListener;
 
 public class FunctionList extends JList<String> {
 	
-	Grapher grapher;
+	private Grapher grapher;
 	private static DefaultListModel<String> list = new DefaultListModel<String>();
 	
 	public FunctionList(String[] data, Grapher grapher) {
 		super(list);
+		System.out.println(data.length);
 		for(String s : data) {
 			list.addElement(s);
 		}
