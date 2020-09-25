@@ -52,6 +52,8 @@ public class Grapher extends JPanel {
 
 	protected Vector<Function> functions;
 	
+	private int selectedFunctionIndex = -1;
+	
 	public Grapher() {
 		xmin = -PI/2.; xmax = 3*PI/2;
 		ymin = -1.5;   ymax = 1.5;
@@ -115,6 +117,11 @@ public class Grapher extends JPanel {
 		repaint();
 	}
 	
+	public void setSelectedFunction(int i) {
+		this.selectedFunctionIndex = i;
+		repaint();
+	}
+	
 	public Dimension getPreferredSize() { return new Dimension(W, H); }
 	
 	protected void paintComponent(Graphics g) {
@@ -161,16 +168,21 @@ public class Grapher extends JPanel {
 			xs[i] = x;
 			Xs[i] = X(x);
 		}
-		
-		for(Function f : functions) {
+		for(int i = 0; i < functions.size(); i++) {
 			// y values
 			int Ys[] = new int[N];
-			for(int i = 0; i < N; i++) {
-				Ys[i] = Y(f.y(xs[i]));
+			for(int j = 0; j < N; j++) {
+				Ys[j] = Y(functions.get(i).y(xs[j]));
 			}
 			
+			if(i == this.selectedFunctionIndex)
+				g2.setStroke(new BasicStroke(3f));
+			else
+				g2.setStroke(new BasicStroke(1f));
 			g2.drawPolyline(Xs, Ys, N);
 		}
+		g2.setStroke(new BasicStroke(1f));
+
 
 		g2.setClip(null);
 
