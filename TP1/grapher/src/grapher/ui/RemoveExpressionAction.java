@@ -14,8 +14,8 @@ public class RemoveExpressionAction extends AbstractAction {
 		this.grapher = grapher;
 		this.functionList = functionList;
 		putValue(NAME, "Remove...");
-		
 	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		int selectedFunction = functionList.getSelectedIndex();
