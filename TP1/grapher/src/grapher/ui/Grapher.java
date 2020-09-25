@@ -200,7 +200,26 @@ public class Grapher extends JPanel {
 		for(BigDecimal y = ystep.negate(); y.doubleValue() > ymin; y = y.subtract(ystep)) { drawYTick(g2, y); }
 		
 		if(firstRightX != -1 && firstRightY != -1) {
-		    g.drawRect(min(firstRightX, lastX),min(firstRightY, lastY), abs(firstRightX-lastX), abs(firstRightY - lastY));  
+			int x =  min(firstRightX, lastX);
+			int y = min(firstRightY, lastY);
+			
+			if(x < MARGIN) {
+				x = MARGIN;
+			} 
+			if(y < MARGIN) {
+				y = MARGIN;
+			} 
+			
+			int w = max(firstRightX, lastX) - x;
+			int h = max(firstRightY, lastY) - y;
+			
+			if((x + w) > MARGIN + W) {
+				w = MARGIN + W - x;
+			}
+			if((y + h) > MARGIN + H) {
+				h = MARGIN + H - y;
+			}			
+		    g.drawRect(x,y, w, h);  
 		    g.setColor(Color.RED);  
 		}
 	}
