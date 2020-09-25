@@ -1,6 +1,9 @@
 package grapher.ui;
 
 import javax.swing.DefaultListModel;
+import java.awt.BorderLayout;
+import java.awt.Component;
+
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
