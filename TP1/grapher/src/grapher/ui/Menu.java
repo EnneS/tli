@@ -9,19 +9,20 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.KeyStroke;
 
 public class Menu extends JMenuBar {
 	
-	public Menu(Grapher grapher, FunctionList functionList) {
+	public Menu(Grapher grapher, JTable table) {
 		JMenu menu = new JMenu("Expression");
 		add(menu);
 
 		JMenuItem addFunctionItem = new JMenuItem("Add...");
-		addFunctionItem.setAction(new AddExpressionAction(grapher, functionList));
+		addFunctionItem.setAction(new AddExpressionAction(grapher, table));
 		
 		JMenuItem removeFunctionItem = new JMenuItem();
-		removeFunctionItem.setAction(new RemoveExpressionAction(grapher, functionList));
+		removeFunctionItem.setAction(new RemoveExpressionAction(grapher, table));
 		menu.add(addFunctionItem);
 		menu.add(removeFunctionItem);
 

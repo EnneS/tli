@@ -51,6 +51,7 @@ public class Grapher extends JPanel {
 	protected double ymin, ymax;
 
 	protected Vector<Function> functions;
+	protected Vector<Color> colors;
 	
 	private int selectedFunctionIndex = -1;
 	
@@ -59,6 +60,7 @@ public class Grapher extends JPanel {
 		ymin = -1.5;   ymax = 1.5;
 		
 		functions = new Vector<Function>();
+		colors = new Vector<Color>();
 		
 		this.addMouseListener(new MouseInputAdapter() {
 			
@@ -108,8 +110,14 @@ public class Grapher extends JPanel {
 		});
 	}
 	
-	public void add(String expression) {
+	public void changeColor(Color c, int index) {
+		this.colors.set(index, c);
+		repaint();
+	};
+	
+	public void add(String expression, Color color) {
 		add(FunctionFactory.createFunction(expression));
+		this.colors.add(color);
 	}
 	
 	public void add(Function function) {
@@ -119,6 +127,7 @@ public class Grapher extends JPanel {
 	
 	public void remove(int index) {
 		functions.remove(index);
+		colors.remove(index);
 		this.selectedFunctionIndex = -1;
 		repaint();
 	}
@@ -175,6 +184,7 @@ public class Grapher extends JPanel {
 			Xs[i] = X(x);
 		}
 		for(int i = 0; i < functions.size(); i++) {
+			g2.setColor(colors.get(i));
 			// y values
 			int Ys[] = new int[N];
 			for(int j = 0; j < N; j++) {
@@ -188,7 +198,7 @@ public class Grapher extends JPanel {
 			g2.drawPolyline(Xs, Ys, N);
 		}
 		g2.setStroke(new BasicStroke(1f));
-
+		g2.setColor(Color.black);
 
 		g2.setClip(null);
 
