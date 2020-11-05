@@ -23,10 +23,12 @@ public class Menu extends JMenuBar {
 		
 		JMenuItem removeFunctionItem = new JMenuItem();
 		removeFunctionItem.setAction(new RemoveExpressionAction(grapher, table));
+
+		JMenuItem changeFunctionColorItem = new JMenuItem();
+		changeFunctionColorItem.setAction(new ChangeColorAction(grapher, table));
+
 		menu.add(addFunctionItem);
 		menu.add(removeFunctionItem);
-
-
-
+		menu.add(changeFunctionColorItem);
 	}
 }

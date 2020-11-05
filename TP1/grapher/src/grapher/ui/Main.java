@@ -16,6 +16,7 @@ import javax.swing.table.TableModel;
 
 
 public class Main extends JFrame {
+	
 	Main(String title, String[] expressions) {
 		super(title);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -29,20 +30,8 @@ public class Main extends JFrame {
 		
 		table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				// TODO Auto-generated method stub
+			public void valueChanged(ListSelectionEvent e) {				
 				grapher.setSelectedFunction(table.getSelectionModel().getSelectedIndices()[0]);
-				// Check if second column is selected.
-				if(table.getSelectedColumn() == 1) {
-					// Ask for color
-					Color c = JColorChooser.showDialog(null, "Choisir une couleur", 
-							(Color) table.getModel().getValueAt(table.getSelectedRow(), 1));
-					if(c == null)
-						return;
-					// Update color on both models
-					((MyTableModel) table.getModel()).changeColor(c, table.getSelectedRow());
-					grapher.changeColor(c, table.getSelectedRow());
-				}
 			}
 		});
 		

@@ -55,18 +55,18 @@ public class MyTableModel extends AbstractTableModel {
 	
 	public void removeElement(int indexRemove) {
 		Object[][] newArray = new Object[this.data.length-1][2];
-		
 		for(int i = 0; i < this.data.length; i++) {
-			if(i > indexRemove) {
+			if(i < indexRemove) {
 				newArray[i][0] = this.data[i][0];
 				newArray[i][1] = this.data[i][1];
 			} else if(i > indexRemove) {
 				newArray[i - 1][0] = this.data[i][0];
 				newArray[i - 1][1] = this.data[i][1];
 			}
+			fireTableCellUpdated(i, 0);
+			fireTableCellUpdated(i, 1);
 		}
-        fireTableCellUpdated(this.data.length-1, 0);
-        fireTableCellUpdated(this.data.length-1, 1);
+		
 		this.data = newArray;
 	}
 	

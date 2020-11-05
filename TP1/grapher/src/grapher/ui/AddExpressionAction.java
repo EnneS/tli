@@ -24,7 +24,9 @@ public class AddExpressionAction extends AbstractAction {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 	     String expression = JOptionPane.showInputDialog("Nouvelle expression :"); 
-	     grapher.add(expression, Color.BLACK);
-	     ((MyTableModel) table.getModel()).addElement(expression, Color.BLACK);
+	     if(expression != null) {
+	    	 grapher.add(expression, Color.BLACK);
+	    	 ((MyTableModel) table.getModel()).addElement(expression, Color.BLACK);
+	     }
 	}
 }

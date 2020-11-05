@@ -19,11 +19,16 @@ public class RemoveExpressionAction extends AbstractAction {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int selectedFunction = table.getSelectionModel().getSelectedIndices()[0];
-		if(selectedFunction != -1) {
-			grapher.remove(selectedFunction);
-			((MyTableModel) table.getModel()).removeElement(selectedFunction);
-		}		
+		// Check if there are functions in the table
+		if(table.getSelectionModel().getSelectedIndices().length != 0) {			
+			int selectedFunction = table.getSelectionModel().getSelectedIndices()[0];
+			// Check if one of them is selected
+			if(selectedFunction != -1) {
+				// Remove it from the grapher and the table
+				grapher.remove(selectedFunction);
+				((MyTableModel) table.getModel()).removeElement(selectedFunction);
+			}		
+		}
 	}
 
 }
